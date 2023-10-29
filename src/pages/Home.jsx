@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import QuizCard from '../components/QuizCard/QuizCard';
-import { Typography, Box, IconButton } from '@mui/material';
+import { Typography, Box, IconButton, formGroupClasses } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
 
 const Home = (props) => {
     const categories = ["Linux", "Bash", "Docker", "CMS", "SQL", "Code", "DevOps", "Uncategorized"];
@@ -19,33 +20,35 @@ const Home = (props) => {
     };
 
     return (
-        <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            minHeight="100vh" // Set the height to 100vh
-        >
+      
             <Box
                 display="flex"
-                flexDirection="column"
+                justifyContent="center"
                 alignItems="center"
-                gap={2}
+                minHeight="100vh"
             >
-                <Typography variant="h2" component="div" fontWeight="bold">
-                    Pick a Quiz!
-                </Typography>
-        
-                <Box display="flex" alignItems="center">
-                    <IconButton onClick={prevCategory}>
-                        <ArrowBackIcon />
-                    </IconButton>
-                    <QuizCard category={categories[currentCategoryIndex]} difficulties={difficulties} />
-                    <IconButton onClick={nextCategory}>
-                        <ArrowForwardIcon />
-                    </IconButton>
+                <Box
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="center"
+                    gap={2}
+                >
+                    <Typography variant="h2" component="div" fontWeight="bold">
+                        Pick a Quiz!
+                    </Typography>
+
+                    <Box display="flex" alignItems="center">
+                        <IconButton onClick={prevCategory}>
+                            <ArrowBackIcon />
+                        </IconButton>
+                        <QuizCard category={categories[currentCategoryIndex]} difficulties={difficulties} />
+                        <IconButton onClick={nextCategory}>
+                            <ArrowForwardIcon />
+                        </IconButton>
+                    </Box>
                 </Box>
             </Box>
-        </Box>
+        
     );
 };
 

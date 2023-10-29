@@ -8,7 +8,7 @@ const QuestionCard = ({ questionNumber, question, answers, userAnswers, updateUs
     const handleAnswerChange = (event) => {
         const newAnswer = event.target.value;
         setSelectedAnswer(newAnswer);
-        updateUserAnswer(newAnswer); // Call the updateUserAnswer function from the parent component
+        updateUserAnswer(newAnswer);
     };
 
     return (

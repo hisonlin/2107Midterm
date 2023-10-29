@@ -7,8 +7,6 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Stack from '@mui/material/Stack';
 import ResultDialogCard from '../components/ResultDialogCard/ResultDialogCard';
-import HomeIcon from '@mui/icons-material/Home';
-
 
 const Quiz = (props) => {
     const URL = "https://quizapi.io/api/v1/questions?apiKey=";
@@ -160,6 +158,20 @@ const Quiz = (props) => {
     return correctAnswersResult;
 }
 
+const handleSubmission = () => {
+    const finalResult = calculateFinalAnswers();
+    const wrongQuestionNumbers = findWrongQuestionNumber();
+    const wrongQuestions = findWrongQuestion();
+    const correctAnswers = findCorrectAnswer();
+    
+    setFinalResult(finalResult);
+    setWrongQuestionNumbers(wrongQuestionNumbers);
+    setWrongQuestions(wrongQuestions);
+    setCorrectAnswers(correctAnswers);
+    closeConfirmationDialog();
+    openResultDialog();
+};
+
     const scrollRight = () => {
         if (scrollContainerRef.current) {
             scrollContainerRef.current.scrollLeft += 600;
@@ -195,10 +207,11 @@ const Quiz = (props) => {
             justifyContent: 'center',
             height: '100vh',
         }}>
-            
+           
             <Typography gutterBottom variant="h3" component="div" fontWeight="bold">
                 {category} - {difficulty}
             </Typography>
+
             <Stack direction="row" spacing={2}>
                 <IconButton onClick={scrollLeft}>
                     <KeyboardArrowLeftIcon />
@@ -255,14 +268,7 @@ const Quiz = (props) => {
                         Are you sure to submit?
                     </Typography>
                     <Box sx={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
-                        <Button variant="contained" color="primary" onClick={() => {
-                            setFinalResult(calculateFinalAnswers());
-                            setWrongQuestionNumbers(findWrongQuestionNumber());
-                            setWrongQuestions(findWrongQuestion());
-                            setCorrectAnswers(findCorrectAnswer());
-                            closeConfirmationDialog();
-                            openResultDialog();
-                        }}>Yes</Button>
+                        <Button variant="contained" color="primary" onClick={handleSubmission}>Yes</Button>
                         <Button variant="contained" color="primary" onClick={closeConfirmationDialog}>No</Button>
                     </Box>
                 </Box>
