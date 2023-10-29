@@ -1,12 +1,8 @@
 .scrollable-container {
-  scroll-behavior: smooth;
-  overflow-x: auto;
-  white-space: nowrap;
-  max-width: 100%;
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 600px;
+  scroll-behavior: smooth; /* Enable smooth scrolling */
 }
-#scrollable-container {
-  scroll-behavior: smooth;
-  overflow-x: auto;
-  white-space: nowrap;
-  max-width: 100%;
-}
+
